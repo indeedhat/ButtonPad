@@ -23,18 +23,26 @@ const (
 
 
 type Macro struct {
-    Label   string
-    Payload []byte
-    Type    MacroType
+    Label   string    `yaml:""`
+    Type    MacroType `yaml:""`
+
+    // default payload
+    Payload []byte    `yaml:""`
+
+    // platform specific payloads
+    Windows []byte    `yaml:""`
+    Linux   []byte    `yaml:""`
+    Darwin  []byte    `yaml:""`
 }
 
 
 // initialize a new macro
-func NewMacro(label string, payload []byte, macroType MacroType) *Macro {
-    return &Macro{
-        label,
-        payload,
-        macroType,
+// setting platform specific payloads should be done outside of this constructor
+func NewMacro(label string, payload []byte, macroType MacroType) Macro {
+    return Macro{
+        Label:   label,
+        Payload: payload,
+        Type:    macroType,
     }
 }
 
