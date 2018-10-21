@@ -1,0 +1,6 @@
+"C:\Program Files\JetBrains\CLion 2017.2\bin\cmake\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" C:\Users\4423\IdeaProjects\ButtonPad\Arduino\button_pad
+-- Generating button_pad
+-- Using C:/Program Files (x86)/Arduino/hardware/tools/avr/bin/avr-objcopy.exe for converting firmware image to hex
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/4423/IdeaProjects/ButtonPad/Arduino/button_pad/cmake-build-debug

@@ -1,8 +1,7 @@
-package helper
+package util
 
 import (
     "bytes"
-    "strconv"
 )
 
 
@@ -11,7 +10,7 @@ func IntArrayToPayload(data []int) []byte {
     var buf bytes.Buffer
 
     for _, val := range data {
-        buf.WriteString(strconv.Itoa(val))
+        buf.WriteByte(byte(val))
     }
 
     return buf.Bytes()

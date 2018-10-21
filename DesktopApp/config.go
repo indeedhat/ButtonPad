@@ -5,12 +5,14 @@ import (
     "path/filepath"
 
     "github.com/indeedhat/vkb/layout"
+    "./com"
     "gopkg.in/yaml.v2"
 )
 
 type Config struct {
     Env    map[string]string `yaml:""`
     Layers []*Layer          `yaml:",flow"`
+    Serial *com.SerialConfig `yaml:""`
 }
 
 
@@ -28,6 +30,9 @@ func NewConfig() *Config {
     for i := 0; i < PAD_LAYERS; i++ {
         c.Layers[i], _ = NewLayer(PAD_BUTTONS)
     }
+
+    // default serial config
+    c.Serial = com.NewSerialConf()
 
     return c
 }

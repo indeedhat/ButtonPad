@@ -3,7 +3,7 @@ package main
 import (
     "errors"
     "github.com/indeedhat/vkb"
-    "./helper"
+    "./util"
 )
 
 type MacroType int
@@ -90,13 +90,13 @@ func (mac *Macro) executeText(kb vkb.VirtKB) error {
 func (mac *Macro) executeOpen(kb vkb.VirtKB) error {
     application := string(mac.Payload)
 
-    return helper.OpenExecutable(application)
+    return util.OpenExecutable(application)
 }
 
 
 // execute the macro based on the payload being an array of keystrokes
 func (mac *Macro) executeSequence(kb vkb.VirtKB) error {
-    keystrokes := helper.PayloadToIntArray(mac.Payload)
+    keystrokes := util.PayloadToIntArray(mac.Payload)
 
     // add payload to virtual keyboard
     kb.AddStrokes(keystrokes)
