@@ -1,2 +1,0 @@
-/usr/bin/ar.exe qc libbpad.a  CMakeFiles/bpad.dir/library.cpp.o
-/usr/bin/ranlib.exe libbpad.a

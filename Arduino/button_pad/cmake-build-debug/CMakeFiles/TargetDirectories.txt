@@ -1,5 +1,0 @@
-C:/Users/4423/IdeaProjects/ButtonPad/Arduino/button_pad/cmake-build-debug/CMakeFiles/uno_CORE.dir
-C:/Users/4423/IdeaProjects/ButtonPad/Arduino/button_pad/cmake-build-debug/CMakeFiles/button_pad-size.dir
-C:/Users/4423/IdeaProjects/ButtonPad/Arduino/button_pad/cmake-build-debug/CMakeFiles/button_pad.dir
-C:/Users/4423/IdeaProjects/ButtonPad/Arduino/button_pad/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/4423/IdeaProjects/ButtonPad/Arduino/button_pad/cmake-build-debug/CMakeFiles/rebuild_cache.dir
