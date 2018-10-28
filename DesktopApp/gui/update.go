@@ -1,4 +1,4 @@
-package main
+package gui
 
 type MacroUpdate struct {
     Type    int

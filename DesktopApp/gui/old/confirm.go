@@ -1,4 +1,4 @@
-package main
+package old
 
 //func NewConfirmBox(changes []MacroUpdate) *fyne.CanvasObject {
 //    updates := widget.List{}
