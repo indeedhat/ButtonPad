@@ -1,4 +1,4 @@
-package main
+package env
 
 const (
     // paths
@@ -13,6 +13,7 @@ const (
     DEFAULT_LAYOUT = "qwerty_us"
 
     // environment keys
-    ENV_LAYOUT = "layout"
-    ENV_LAYER  = "default_layer"
+
+    LAYOUT = "layout"
+    LAYER  = "default_layer"
 )

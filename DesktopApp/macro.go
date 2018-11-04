@@ -4,27 +4,15 @@ import (
     "errors"
     "github.com/indeedhat/vkb"
     "./util"
+    "./env"
 )
 
-type MacroType int
 
-const (
-    // this will simply type some text
-    MACRO_TEXT MacroType = iota
-    // this will attempt to open an application
-    MACRO_OPEN
-    // this will execute a sequence of keystrokes
-    MACRO_SEQUENCE
-    // this will run some code
-    // TODO: i have no idea what exactly i want from this and therefore how im gonna implement this yet it needs some
-    // TODO: thinking about
-    MACRO_CODE
-)
 
 
 type Macro struct {
     Label   string    `yaml:""`
-    Type    MacroType `yaml:""`
+    Type    env.MacroType `yaml:""`
 
     // default payload
     Payload []byte    `yaml:""`
@@ -38,7 +26,7 @@ type Macro struct {
 
 // initialize a new macro
 // setting platform specific payloads should be done outside of this constructor
-func NewMacro(label string, payload []byte, macroType MacroType) Macro {
+func NewMacro(label string, payload []byte, macroType env.MacroType) Macro {
     return Macro{
         Label:   label,
         Payload: payload,
@@ -58,13 +46,13 @@ func (mac *Macro) Execute(kb vkb.VirtKB) (err error) {
     kb.Reset()
 
     switch mac.Type {
-    case MACRO_TEXT:
+    case env.MACRO_TEXT:
         err = mac.executeText(kb)
-    case MACRO_OPEN:
+    case env.MACRO_OPEN:
         err = mac.executeOpen(kb)
-    case MACRO_SEQUENCE:
+    case env.MACRO_SEQUENCE:
         err = mac.executeSequence(kb)
-    case MACRO_CODE:
+    case env.MACRO_CODE:
         err = mac.executeCode(kb)
     }
 

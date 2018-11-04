@@ -12,6 +12,8 @@ const (
     APP_TITLE = "Button Pad"
 )
 
+var sideBar *gtk.Grid
+
 
 // keep track of windo id's
 var id = 0
@@ -49,33 +51,58 @@ func NewUiController(
     if nil != err {
         panic(err.Error())
     }
-    layout.SetOrientation(gtk.ORIENTATION_VERTICAL)
+    layout.SetOrientation(gtk.ORIENTATION_HORIZONTAL)
+
+    layers, err := gtk.GridNew()
+    if nil != err {
+        panic(err.Error())
+    }
+    layers.SetOrientation(gtk.ORIENTATION_VERTICAL)
 
     macros := make(map[int]*gtk.Grid)
     activeLayer := 1
     for i := 1; i <= 4; i++ {
-        macros[i], _ = LayerTemplate(i, func(button *gtk.Button) {fmt.Println(button.GetLabel())})
+        macros[i], _ = LayerTemplate(i, func(button *gtk.Button) {
+            fmt.Println(button.GetLabel())
+
+            if nil != sideBar {
+                layout.Remove(sideBar)
+            }
+
+            sideBar, err = MacroUpdateContainer()
+            if nil != err {
+                fmt.Println(err.Error())
+            }
+            fmt.Println(sideBar)
+            fmt.Println(layout)
+            layout.Add(sideBar)
+            fmt.Println(layout)
+            fmt.Println("finished with the click")
+            layout.ShowAll()
+        })
 
     }
 
     // add the default content
     layer, err := LayerSelector(func (button *gtk.Button) {
-        layout.Remove(macros[activeLayer])
+        layers.Remove(macros[activeLayer])
         lab, _ := button.GetLabel()
         activeLayer, _ = strconv.Atoi(string(lab[len(lab)-1]))
 
 
         fmt.Println("adding macros", activeLayer, macros[activeLayer])
-        layout.Add(macros[activeLayer])
-        layout.ShowAll()
+        layers.Add(macros[activeLayer])
+        layers.ShowAll()
     })
     if nil != err {
         panic(err.Error())
     }
-    layout.Add(layer)
+    layers.Add(layer)
 
     // add macros
-    layout.Add(macros[activeLayer])
+    layers.Add(macros[activeLayer])
+
+    layout.Add(layers)
 
     win.Add(layout)
 

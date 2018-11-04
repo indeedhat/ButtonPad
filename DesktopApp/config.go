@@ -6,6 +6,7 @@ import (
 
     "github.com/indeedhat/vkb/layout"
     "./com"
+    "./env"
     "gopkg.in/yaml.v2"
 )
 
@@ -22,13 +23,13 @@ func NewConfig() *Config {
     c.Env = make(map[string]string)
 
     // setup environment defaults
-    c.Env[ENV_LAYOUT] = DEFAULT_LAYOUT
-    c.Env[ENV_LAYER]  = DEFAULT_LAYER
+    c.Env[env.LAYOUT] = env.DEFAULT_LAYOUT
+    c.Env[env.LAYER]  = env.DEFAULT_LAYER
 
     // setup empty layers
-    c.Layers = make([]*Layer, PAD_LAYERS)
-    for i := 0; i < PAD_LAYERS; i++ {
-        c.Layers[i], _ = NewLayer(PAD_BUTTONS)
+    c.Layers = make([]*Layer, env.PAD_LAYERS)
+    for i := 0; i < env.PAD_LAYERS; i++ {
+        c.Layers[i], _ = NewLayer(env.PAD_BUTTONS)
     }
 
     // default serial config
@@ -43,7 +44,7 @@ func NewConfig() *Config {
 // it would be interesting to see about loading from a text file to allow people to easily create their own layouts
 func (c *Config) LoadKeyboardLayout() *layout.Layout {
     // i realise just how pointless this seems but it is here for future use when i have added more layouts
-    switch c.Env[ENV_LAYOUT] {
+    switch c.Env[env.LAYOUT] {
     default:
         l := layout.QwertyUs()
         return &l
@@ -56,7 +57,7 @@ func (a *App) loadConfig() (err error) {
     var path string
     var data []byte
 
-    if path, err = filepath.Abs(CONFIG_PATH); nil != err {
+    if path, err = filepath.Abs(env.CONFIG_PATH); nil != err {
         return
     }
 
@@ -79,7 +80,7 @@ func (a *App) saveConfig() (err error) {
     var data []byte
     var path string
 
-    if path, err = filepath.Abs(CONFIG_PATH); nil != err {
+    if path, err = filepath.Abs(env.CONFIG_PATH); nil != err {
         return
     }
 

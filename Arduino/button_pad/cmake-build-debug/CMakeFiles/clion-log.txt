@@ -1,0 +1,12 @@
+/home/indeedhat/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4892.24/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/indeedhat/go/src/github.com/indeedhat/ButtonPad/Arduino/button_pad
+CMake Error at /home/indeedhat/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/182.4892.24/bin/cmake/linux/share/cmake-3.12/Modules/CMakeDetermineSystem.cmake:100 (message):
+  Could not find toolchain file:
+  /home/indeedhat/go/src/github.com/indeedhat/ButtonPad/Arduino/button_pad/cmake/ArduinoToolchain.cmake
+Call Stack (most recent call first):
+  CMakeLists.txt:4 (project)
+
+
+CMake Error: CMake was unable to find a build program corresponding to "Unix Makefiles".  CMAKE_MAKE_PROGRAM is not set.  You probably need to select a different build tool.
+CMake Error: CMAKE_C_COMPILER not set, after EnableLanguage
+CMake Error: CMAKE_CXX_COMPILER not set, after EnableLanguage
+-- Configuring incomplete, errors occurred!
