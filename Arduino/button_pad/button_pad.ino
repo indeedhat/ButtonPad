@@ -8,16 +8,16 @@
 #define KEY_MUTE     0x7F
 #define KEY_VOL_UP   0x80
 #define KEY_VOL_DOWN 0x81
-#defube KEY_0        0x27
-#defube KEY_1        0x1e
-#defube KEY_2        0x1f
-#defube KEY_3        0x20
-#defube KEY_4        0x21
-#defube KEY_5        0x22
-#defube KEY_6        0x23
-#defube KEY_7        0x24
-#defube KEY_8        0x25
-#defube KEY_9        0x26
+#define KEY_0        0x27
+#define KEY_1        0x1e
+#define KEY_2        0x1f
+#define KEY_3        0x20
+#define KEY_4        0x21
+#define KEY_5        0x22
+#define KEY_6        0x23
+#define KEY_7        0x24
+#define KEY_8        0x25
+#define KEY_9        0x26
 #define KEY_DOT      0x37
 #define KEY_EQL      0x67
 #define KEY_MNS      0x56
@@ -30,16 +30,15 @@
 #define N_KEY_ROLLOVER 1
 
 
-// TODO: work out what pins i am going to use for this
-byte rows[]            = {1, 2, 3, 4, 5};
+byte rows[]            = {10, 16, 14, 15, 18};
 const uint8_t rowCount = 5;
 
-byte cols[]            = {15, 14, 13, 12};
+byte cols[]            = {9, 8, 7, 6};
 const uint8_t colCount = 4;
 
 
 // layers
-byte layers[]            = {7, 8, 9, 10};
+byte layers[]            = {5, 4, 3, 2};
 const uint8_t layerCount = 4;
 uint8_t layer            = 0;
 
